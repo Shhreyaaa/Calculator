@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script.js"></script>
+</head>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<body>
+    <div class="main">
+        <div class="parent">
+            <input readonly id="display">
+            <button id="delete" onclick="deleteValue()"><i class="fa-solid fa-delete-left" style="color: #017301; margin-right: 10px; font-size: 20px;" ></i></button>
+        </div>
+        <div class="parent">
+            <button onclick="diplayValue('(')" class="operator">(</button>
+            <button onclick="diplayValue(')')" class="operator">)</button>
+            <button onclick="modValue('%')" class="operator">%</button>
+            <button onclick="diplayValue('+')" class="operator">+</button>
+            
+        </div>
+        <div class="parent">  
+            <button onclick="diplayValue('7')" class="button">7</button>      
+            <button onclick="diplayValue('8')" class="button">8</button>
+            <button onclick="diplayValue('9')" class="button">9</button>
+            <button onclick="diplayValue('-')" class="operator">-</button>
+            
+        </div>
+        <div class="parent">   
+            <button onclick="diplayValue('4')" class="button">4</button>
+            <button onclick="diplayValue('5')" class="button">5</button>     
+            <button onclick="diplayValue('6')" class="button">6</button>
+            <button onclick="diplayValue('*')" class="operator">x</button>
+             
+        </div>
+        <div class="parent">
+            <button onclick="diplayValue('1')" class="button">1</button>
+            <button onclick="diplayValue('2')" class="button">2</button>
+            <button onclick="diplayValue('3')" class="button">3</button>                   
+            <button onclick="diplayValue('/')" class="operator">/</button>
+            
+        </div>
+        <div class="parent">
+            <button onclick="diplayValue('.')" class="button">.</button>
+            <button onclick="diplayValue('0')" class="button">0</button>
+            <button onclick="clearValue('C')" class="clear">C</button>                   
+            <button onclick="calculate('=')" class="equal">=</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const display=document.getElementById('display')
+    const diplayValue=(input)=>{
+        display.value+=input
+    }
+    const clearValue=()=>{
+        display.value=""
+        display.placeholder="0"
+    }
+    const calculate=()=>{
+        // try-catch block
+        try{
+            console.log("inside try block");
+            display.value=eval(display.value)            
+        }
+        catch(err){
+            console.log("inside catch block");
+            console.log(err);
+            display.placeholder="invalid expression"
+            display.value=""            
+            
+        }
+        finally{
+            console.log("inside finally block");
+        }
+        
+    }
+    const modValue=()=>{
+        display.value=(display.value)/100
+    }
+    const deleteValue=()=>{
+        display.value=display.value.slice(0,-1)
+       
+    }
+
+</script>
+</html>
